@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var c, python, java = true, false, "string!" // variable declaration, package or function level
 const (
@@ -56,6 +59,17 @@ func forLoop(max int) (int, int) {
 	return max, sum
 }
 
+func pow(x, n, lim float64) float64 {
+	// 'if' could have a short statement before the condition
+	if v := math.Pow(x, n); v < lim {
+		return v
+	} else {
+		fmt.Printf("%g >= %g\n", v, lim)
+	}
+	// can't use v here, though
+	return lim
+}
+
 func main() {
 	var i, j int = 1, 2 // variable declaration with initializers (type (int) can be omitted)
 	k := 5              // short assigment statement (only used inside a function)
@@ -74,4 +88,15 @@ func main() {
 	max, sum := forLoop(100)
 	fmt.Printf("max: %v sum: %v\n\n", max, sum)
 
+	fmt.Println(
+		pow(3, 2, 10),
+		pow(3, 3, 20),
+	)
+
+	v := SqRoot(7.89)
+	fmt.Printf("SqRoot Type: %T Value: %v\n\n", v, v)
+
+	currentOS()
+
+	deferredPrint("my string")
 }
